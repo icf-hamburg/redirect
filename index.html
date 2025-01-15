@@ -4,11 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weiterleitung zu ICF Hamburg</title>
+    <style>
+        .version {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-family: monospace;
+            font-size: 12px;
+            color: #666;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 5px 10px;
+            border-radius: 3px;
+            z-index: 1000;
+        }
+    </style>
     <script>
-        window.location.href = 'https://icf.church/hamburg/';
+        // Get the path from the current URL
+        const path = window.location.pathname;
+        // Remove leading slash and create the redirect URL
+        const redirectPath = path.replace(/^\//, '');
+        // Construct the full URL
+        const redirectUrl = `https://icf.church/hamburg/${redirectPath}`;
+        // Set a small delay to show the version number before redirect
+        setTimeout(() => {
+            window.location.href = redirectUrl;
+        }, 500);
     </script>
 </head>
 <body>
     <p>Sie werden zur ICF Hamburg weitergeleitet...</p>
+    <div class="version">v1.0.0</div>
+    <noscript>
+        <p>Bitte aktivieren Sie JavaScript für die automatische Weiterleitung.</p>
+    </noscript>
 </body>
 </html>
